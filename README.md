@@ -39,27 +39,45 @@ Dividing the main problems described above into even smaller pieces to be able t
       * Row 4
         * Number, Number, Number, Operation
       * Row 5
-        * Operation, Operation, Operation
+        * Number, Operation, Operation
 
 * CSS
   * Center calculator
+  * Align the rows inside calculator
+  * setup CSS Grid for input buttons
+  * choose font-family
+  * add shadows
+  * add animations
+  * make the design responsive
 
 ## Problem 2: Create Functionality
 
 * Add Function:
-  * To Be Continued
+  * Usage: perform addition on two numbers returning the sum
+  * Input: two numbers; order doesn't matter ex: add(2,7) => 2+7 = 9
+  * Output: one number
+
 
 * Subtract Function:
-  * To Be Continued
+  * Usage: perform subtraction on two numbers returning the difference
+  * Input: two numbers; order matters ex: subtract(6,2) => 6-2 = 4
+  * Output: one number
 
 * Multiply Function:
-* To Be Continued
+  * Usage: perform multiplication on two numbers returning the product
+  * Input: two numbers; order doesn't matter ex: multiply(5,3) => 5x3 = 15
+  * Output: one number
 
 * Divide Function:
-  * To Be Continued
+  * Usage: perform division on two numbers returning the quotient
+  * Input: two numbers; order matters ex: divide(4,2) => 4/2 = 2
+  * Output: one number
+  * Cannot divide by zero, show error
 
 * Operate Function:
-  * To Be Continued
+  * Usage: performs user chosen operation on 2 numbers
+  * Input: two numbers, operator function
+  * Output: one number
 
 ## Problem 3: Connect User Interface to Functions
 
