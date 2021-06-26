@@ -42,7 +42,7 @@ Dividing the main problems described above into even smaller pieces to be able t
         * Operation, Operation, Operation
 
 * CSS
-  * To Be Continued...
+  * Center calculator
 
 ## Problem 2: Create Functionality
 
