@@ -22,16 +22,27 @@ const operate = (math, a, b) => {
 };
 
 const setDisplay = (str) => {
+    // console.log('Set Display length: ' + String(str).length);
     let display = document.getElementById('output');
+    if(String(str).length < 12) {
             display.textContent = str;
             console.log('Set Display: ' + display.textContent)
+
+    } 
+    else {
+        display.textContent = 'Error';
+    }
 
 };
 
 const updateDisplay = (str) => {
+    // console.log('Update Display length: ' + getDisplay().length);
+    if(getDisplay().length < 11) {
     let display = document.getElementById('output');
     display.textContent += str;
-    console.log('Update Display: ' + display.textContent);
+    console.log('Update Display: ' + display.textContent);        
+    }
+
 }
 
 const getDisplay = () => {
@@ -148,6 +159,17 @@ divideButton.addEventListener('click', () => {
         setStore(Number(getDisplay()),null,'divide');
         numberStore.displaySwitch = 1;
     }       
+});
+
+const decimalButton = document.getElementById('decimal');
+
+decimalButton.addEventListener('click', () => {
+    if(getDisplay().includes('.') === false) {
+        updateDisplay('.');
+    } else if(numberStore.displaySwitch === 1) {
+        setDisplay('0.');
+        numberStore.displaySwitch = 0;
+    }
 });
 
 const equalsButton = document.getElementById('equals');
