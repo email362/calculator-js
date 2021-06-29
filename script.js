@@ -5,7 +5,15 @@ const subtract = (a,b) => a-b;
 // multiply function
 const multiply = (a,b) => a*b;
 // divide function
-const divide = (a,b) => a/b;
+const divide = (a,b) => {
+    
+    if(b===0) {
+        alert('YOU SHALL NOT PASS!(TLDR: Cant divide by 0)');
+        return 0;
+    }
+    
+    return a/b;
+}
 // operate function takes in one of the above functions, returns function call result
 const operate = (math, a, b) => {
 
@@ -104,6 +112,42 @@ subButton.addEventListener('click', () => {
         setStore(Number(getDisplay()),null,'subtract');
         numberStore.displaySwitch = 1;
     }
+});
+
+const multiplyButton = document.getElementById('multiply');
+
+multiplyButton.addEventListener('click', () => {
+    if(numberStore.operation == 'multiply') {
+        setStore(null, Number(getDisplay()),null);
+        let result = operate(multiply,numberStore.firstNumber, numberStore.secondNumber);
+        setDisplay(result);
+        setStore(result,null,null);
+        numberStore.operation = 'multiply';
+        numberStore.secondNumber = null;
+        numberStore.displaySwitch = 1;
+    }
+    else {
+        setStore(Number(getDisplay()),null,'multiply');
+        numberStore.displaySwitch = 1;
+    }    
+});
+
+const divideButton = document.getElementById('divide');
+
+divideButton.addEventListener('click', () => {
+    if(numberStore.operation == 'divide') {
+        setStore(null, Number(getDisplay()),null);
+        let result = operate(divide,numberStore.firstNumber, numberStore.secondNumber);
+        setDisplay(result);
+        setStore(result,null,null);
+        numberStore.operation = 'divide';
+        numberStore.secondNumber = null;
+        numberStore.displaySwitch = 1;
+    }
+    else {
+        setStore(Number(getDisplay()),null,'divide');
+        numberStore.displaySwitch = 1;
+    }       
 });
 
 const equalsButton = document.getElementById('equals');
