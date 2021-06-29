@@ -9,27 +9,46 @@ const divide = (a,b) => a/b;
 // operate function takes in one of the above functions, returns function call result
 const operate = (math, a, b) => {
 
+    
     return math(a,b);
 };
 
-const numberStore = {
-    firstNumber: null,
-    secondNumber: null,
-    operation: null
+const setDisplay = (str) => {
+    let display = document.getElementById('output');
+            display.textContent = str;
+            console.log('Set Display: ' + display.textContent)
+
 };
 
-const updateDisplay = (buttonText) => {
-    let displayNode = document.getElementById('output');
+const updateDisplay = (str) => {
+    let display = document.getElementById('output');
+    display.textContent += str;
+    console.log('Update Display: ' + display.textContent);
+}
 
-    if (displayNode.innerText.length < 11) {
-        if (displayNode.innerText === '0') {
-            displayNode.innerText = buttonText;
-        } else {
-         displayNode.innerText += buttonText;            
-        }
- 
+const getDisplay = () => {
+    let displayElement = document.getElementById('output');
+    return displayElement.textContent;
+};
+
+const numberStore = {
+    firstNumber: 0,
+    secondNumber: null,
+    operation: null,
+    displaySwitch: 0
+};
+// all for adding numbers to display
+
+const setStore = (first, second, operand) => {
+    if (first !== null) {
+        numberStore.firstNumber = Number(first);
     }
-
+    if (second !== null) {
+        numberStore.secondNumber = Number(second);
+    }
+    if(operand !== null) {
+            numberStore.operation = operand;
+    }
 };
 
 const numButtons = document.querySelectorAll('.number');
@@ -37,10 +56,82 @@ const numButtons = document.querySelectorAll('.number');
 numButtons.forEach( (button) => {
     button.addEventListener('click', (e) => {
         let textToAdd = e.target.childNodes[0].textContent;
-        updateDisplay(textToAdd);
+        if (getDisplay() == '0') {
+            setDisplay(textToAdd);
+        }else if(numberStore.displaySwitch == 1) {
+            setDisplay(textToAdd);
+            numberStore.displaySwitch = 0;
+        } else {
+            updateDisplay(textToAdd);
+        }
     })
 });
 
+const addButton = document.getElementById('add');
 
+addButton.addEventListener('click', () => {
+        
+        setStore(Number(getDisplay()),null,'add');
+        numberStore.displaySwitch = 1;
 
-// calculator flow: number => operation => number => operation => 
+        /*if(numberStore.operation !== null) {
+            setStore(null,Number(getDisplay()),null);
+            setStore(operate(add,numberStore.firstNumber,numberStore.secondNumber),null,'add');
+            numberStore.secondNumber = null;
+            setDisplay(numberStore.firstNumber);
+        }
+        else {
+            setStore(Number(getDisplay()),null,'add');
+        }*/            
+
+})
+
+const equalsButton = document.getElementById('equals');
+
+equalsButton.addEventListener('click', () => {
+    if(numberStore.operation !== null) {
+            setStore(null, Number(getDisplay()),null);
+        let result;
+        switch (numberStore.operation) {
+            case "add":
+                result = operate(add, numberStore.firstNumber, numberStore.secondNumber);
+                break;
+            case "subtract":
+                result = operate(subtract, numberStore.firstNumber, numberStore.secondNumber);
+                break;
+            case "multiply":
+                result = operate(multiply, numberStore.firstNumber, numberStore.secondNumber);
+                break;
+            case "divide":
+                result = operate(divide, numberStore.firstNumber, numberStore.secondNumber);
+        }
+        setDisplay(result);
+        setStore(result,null,null);
+        numberStore.operation = null;
+        numberStore.secondNumber = null;
+        numberStore.displaySwitch = 1;
+    }
+});
+
+const clearButton = document.getElementById('clear');
+
+clearButton.addEventListener('click', () => {
+    numberStore.firstNumber = 0;
+    numberStore.secondNumber = null;
+    numberStore.operation = null;
+    numberStore.displaySwitch = 0;
+    setDisplay('0');
+});
+
+const backButton = document.getElementById('back');
+
+backButton.addEventListener('click', () => {
+    let currentDisplay = getDisplay();
+    if(currentDisplay.length === 1) {
+        setDisplay('0');
+    }
+    else {
+        setDisplay(currentDisplay.slice(0,-1));        
+    }
+
+});
