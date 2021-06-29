@@ -20,13 +20,13 @@ const operate = (math, a, b) => {
     
     return math(a,b);
 };
-
+// used to wipe the screen when inputting a second number
 const setDisplay = (str) => {
     // console.log('Set Display length: ' + String(str).length);
     let display = document.getElementById('output');
     if(String(str).length < 12) {
             display.textContent = str;
-            console.log('Set Display: ' + display.textContent)
+            // console.log('Set Display: ' + display.textContent)
 
     } 
     else {
@@ -34,30 +34,30 @@ const setDisplay = (str) => {
     }
 
 };
-
+// used to constantly update the screen with the number being put in.
 const updateDisplay = (str) => {
     // console.log('Update Display length: ' + getDisplay().length);
     if(getDisplay().length < 11) {
     let display = document.getElementById('output');
     display.textContent += str;
-    console.log('Update Display: ' + display.textContent);        
+    // console.log('Update Display: ' + display.textContent);        
     }
 
 }
-
+// grab the str on the display to make sure there is no overflow
 const getDisplay = () => {
     let displayElement = document.getElementById('output');
     return displayElement.textContent;
 };
-
+// object that stores all the data used in the calculator
 const numberStore = {
     firstNumber: 0,
     secondNumber: null,
     operation: null,
     displaySwitch: 0
 };
-// all for adding numbers to display
 
+// set function to save the first,second, and operation in the object
 const setStore = (first, second, operand) => {
     if (first !== null) {
         numberStore.firstNumber = Number(first);
@@ -70,6 +70,7 @@ const setStore = (first, second, operand) => {
     }
 };
 
+// Allows numbers to add values to the display
 const numButtons = document.querySelectorAll('.number');
 
 numButtons.forEach( (button) => {
@@ -86,6 +87,7 @@ numButtons.forEach( (button) => {
     })
 });
 
+// Allows addition and operating on numbers by continuously pressing add
 const addButton = document.getElementById('add');
 
 addButton.addEventListener('click', () => {
@@ -107,6 +109,7 @@ addButton.addEventListener('click', () => {
 
 });
 
+// Allows subtraction and continous subtraction 
 const subButton = document.getElementById('subtract');
 
 subButton.addEventListener('click', () => {
@@ -125,6 +128,7 @@ subButton.addEventListener('click', () => {
     }
 });
 
+// same as sub and add, but with multiplication as the operator
 const multiplyButton = document.getElementById('multiply');
 
 multiplyButton.addEventListener('click', () => {
@@ -143,6 +147,7 @@ multiplyButton.addEventListener('click', () => {
     }    
 });
 
+// the same as the other operation functions
 const divideButton = document.getElementById('divide');
 
 divideButton.addEventListener('click', () => {
@@ -161,6 +166,8 @@ divideButton.addEventListener('click', () => {
     }       
 });
 
+// allows the use of floating point numbers and checks to make sure
+// there's only one decimal point in use
 const decimalButton = document.getElementById('decimal');
 
 decimalButton.addEventListener('click', () => {
@@ -172,6 +179,7 @@ decimalButton.addEventListener('click', () => {
     }
 });
 
+// requires both numbers and an operator, then does the operation
 const equalsButton = document.getElementById('equals');
 
 equalsButton.addEventListener('click', () => {
@@ -199,6 +207,7 @@ equalsButton.addEventListener('click', () => {
     }
 });
 
+// reset button used to reset everything to the base state
 const clearButton = document.getElementById('clear');
 
 clearButton.addEventListener('click', () => {
@@ -209,6 +218,7 @@ clearButton.addEventListener('click', () => {
     setDisplay('0');
 });
 
+// allows you to backspace a number if you changed your mind
 const backButton = document.getElementById('back');
 
 backButton.addEventListener('click', () => {
