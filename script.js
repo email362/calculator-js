@@ -71,20 +71,40 @@ const addButton = document.getElementById('add');
 
 addButton.addEventListener('click', () => {
         
-        setStore(Number(getDisplay()),null,'add');
+    if(numberStore.operation == 'add') {
+        setStore(null,Number(getDisplay()),null);
+        let result = operate(add, numberStore.firstNumber, numberStore.secondNumber);
+        setDisplay(result);
+        setStore(result,null,null);
+        numberStore.operation = 'add';
+        numberStore.secondNumber = null;
         numberStore.displaySwitch = 1;
 
-        /*if(numberStore.operation !== null) {
-            setStore(null,Number(getDisplay()),null);
-            setStore(operate(add,numberStore.firstNumber,numberStore.secondNumber),null,'add');
-            numberStore.secondNumber = null;
-            setDisplay(numberStore.firstNumber);
-        }
-        else {
-            setStore(Number(getDisplay()),null,'add');
-        }*/            
+    }
+    else {
+        setStore(Number(getDisplay()),null,'add');
+        numberStore.displaySwitch = 1;        
+    }        
 
-})
+});
+
+const subButton = document.getElementById('subtract');
+
+subButton.addEventListener('click', () => {
+    if(numberStore.operation == 'subtract') {
+        setStore(null, Number(getDisplay()),null);
+        let result = operate(subtract,numberStore.firstNumber, numberStore.secondNumber);
+        setDisplay(result);
+        setStore(result,null,null);
+        numberStore.operation = 'subtract';
+        numberStore.secondNumber = null;
+        numberStore.displaySwitch = 1;
+    }
+    else {
+        setStore(Number(getDisplay()),null,'subtract');
+        numberStore.displaySwitch = 1;
+    }
+});
 
 const equalsButton = document.getElementById('equals');
 
