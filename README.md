@@ -1,5 +1,10 @@
 # calculator-js
 Simple calculator application built using pure js, html, and css. The calculator will be able to perform basic functions such as add, subtract, multiply, and divide. The calculator only operates on two numbers at a time like a basic calculator found on the iPhone or on any default calculator application. 
+--------
+<p align='center'>
+ <img width="366" alt="calcShot" src="https://user-images.githubusercontent.com/13335957/124001232-45385a00-d989-11eb-8b62-a130ccdbc5db.png">
+</p>
+
 # Plan
 **Q:** What will be the interface?
 
