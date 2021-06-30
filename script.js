@@ -24,7 +24,7 @@ const operate = (math, a, b) => {
 const setDisplay = (str) => {
     // console.log('Set Display length: ' + String(str).length);
     let display = document.getElementById('output');
-    if(String(str).length < 12) {
+    if(String(str).length < 11) {
             display.textContent = str;
             // console.log('Set Display: ' + display.textContent)
 
@@ -37,7 +37,7 @@ const setDisplay = (str) => {
 // used to constantly update the screen with the number being put in.
 const updateDisplay = (str) => {
     // console.log('Update Display length: ' + getDisplay().length);
-    if(getDisplay().length < 11) {
+    if(getDisplay().length < 9) {
     let display = document.getElementById('output');
     display.textContent += str;
     // console.log('Update Display: ' + display.textContent);        
