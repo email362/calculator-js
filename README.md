@@ -1,4 +1,4 @@
-# calculator-js
+# calculator-js https://email362.github.io/calculator-js/index.html
 Simple calculator application built using pure js, html, and css. The calculator will be able to perform basic functions such as add, subtract, multiply, and divide. The calculator only operates on two numbers at a time like a basic calculator found on the iPhone or on any default calculator application. 
 --------
 <p align='center'>
