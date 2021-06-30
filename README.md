@@ -81,5 +81,5 @@ Dividing the main problems described above into even smaller pieces to be able t
 
 ## Problem 3: Connect User Interface to Functions
 
-* To Be Continued
+* Use DOM methods to add event functionality
 
